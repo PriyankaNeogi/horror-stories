@@ -3,491 +3,741 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Horror Stories – The Era of Dark Animation & 2D Assets</title>
-  <meta name="description" content="Premium 2D Horror Rigs, Haunted Backgrounds, Monsters, Cursed Props, and Voice Actors for Animation Creators.">
+  <title>Horror Stories – 2D Horror Animation Assets, Rigs & Voice FX</title>
+  <meta name="description" content="Premium 2D horror rigs, haunted backgrounds, demon characters, cursed props and voice FX for YouTube horror creators. 100% commercial safe.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Creepster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Stripe.js for payments -->
+  <script src="https://js.stripe.com/v3/"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container top-bar-content">
-      <div class="announcement">
-        <span class="badge">NEW</span>
-        <span>🔥 2026 Edition: Free Ghost Rigs & Dark Ambience Packs Available! Use Code <strong>SPOOKYFREE</strong></span>
+  <!-- ===== HORROR PARTICLE CANVAS BACKGROUND ===== -->
+  <canvas id="horrorCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===== TOP ANNOUNCEMENT BAR (exact ToonYug structure) ===== -->
+  <div class="top-bar" id="topBar">
+    <div class="top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-icon">📞</span><a href="tel:+919318400529">+91 931-840-0529</a>
+        <span class="sep">|</span>
+        <span class="top-bar-icon">✉️</span><a href="mailto:info@horrorstories.in">info@horrorstories.in</a>
       </div>
-      <div class="top-links">
-        <a href="#services">🎙️ Voice Actors</a>
-        <a href="#license">📜 Commercial License</a>
-        <a href="#support">⚡ Creator Support</a>
+      <div class="top-bar-center">
+        <span class="promo-badge">🔥 NEW</span>
+        Free 2026 Ghost Rig Bundle — Use Code <strong>HORROR2026</strong> &nbsp;·&nbsp;
+        <a href="#free-section">Claim Now</a>
+      </div>
+      <div class="top-bar-right">
+        <a href="#license">🎨 Creator License</a>
+        <a href="#license">©️ Strike-Free Policy</a>
+        <a href="#faq">💼 Commercial License</a>
       </div>
     </div>
   </div>
 
-  <!-- Main Navigation Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="brand-logo">
-        <div class="logo-icon">💀</div>
-        <div class="logo-text">
-          <span class="brand-title">HORROR STORIES</span>
-          <span class="brand-subtitle">THE ERA OF DARK ANIMATION</span>
+  <!-- ===== MAIN HEADER (ToonYug exact layout) ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-main">
+      <!-- LOGO -->
+      <a href="#" class="site-logo" id="siteLogo">
+        <div class="logo-skull">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="skull-svg" aria-label="Horror Stories logo skull">
+            <ellipse cx="30" cy="26" rx="18" ry="20" fill="#1a0a0a"/>
+            <ellipse cx="30" cy="26" rx="17" ry="19" fill="#2d0f0f"/>
+            <circle cx="23" cy="22" r="5" fill="#0a0a0a"/>
+            <circle cx="37" cy="22" r="5" fill="#0a0a0a"/>
+            <circle cx="23" cy="22" r="3" fill="#e11d48" opacity="0.8"/>
+            <circle cx="37" cy="22" r="3" fill="#e11d48" opacity="0.8"/>
+            <rect x="25" y="39" width="4" height="8" rx="1" fill="#1a0a0a"/>
+            <rect x="31" y="39" width="4" height="8" rx="1" fill="#1a0a0a"/>
+            <rect x="22" y="39" width="4" height="6" rx="1" fill="#2d0f0f"/>
+            <rect x="34" y="39" width="4" height="6" rx="1" fill="#2d0f0f"/>
+            <path d="M18 34 Q30 40 42 34" stroke="#3d1515" stroke-width="2" fill="none"/>
+            <path d="M20 32 Q30 38 40 32" fill="#2d0f0f"/>
+          </svg>
+          <div class="logo-glow-ring"></div>
+        </div>
+        <div class="logo-text-block">
+          <span class="logo-title">HORROR STORIES</span>
+          <span class="logo-tagline">THE ERA OF DARK ANIMATION</span>
         </div>
       </a>
 
-      <!-- Search Bar -->
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Search 2D horror rigs, haunted backgrounds, ghosts, voice FX...">
-        <button id="searchBtn" class="search-submit">Search</button>
+      <!-- SEARCH BAR -->
+      <div class="header-search">
+        <div class="search-wrap" id="searchWrap">
+          <span class="search-icon-svg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </span>
+          <input type="search" id="siteSearch" placeholder="Search ghost rigs, haunted bg, demon characters, sound FX..." autocomplete="off">
+          <button id="siteSearchBtn" class="search-submit-btn">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
       </div>
 
-      <!-- Header Action Icons -->
-      <div class="header-actions">
-        <button class="action-btn" id="wishlistBtn" title="Wishlist">
-          <span class="icon">🖤</span>
-          <span class="counter" id="wishlistCount">0</span>
+      <!-- HEADER TOOLS (ToonYug: wishlist + cart + account) -->
+      <div class="header-tools">
+        <button class="tool-btn wishlist-btn" id="wishlistToggle" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="tool-count" id="wishlistCount">0</span>
         </button>
-        <button class="action-btn" id="cartBtn" title="Cart">
-          <span class="icon">🛒</span>
-          <span class="counter" id="cartCount">0</span>
+        <button class="tool-btn cart-btn" id="cartToggle" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="tool-count" id="cartCount">0</span>
         </button>
-        <a href="#market" class="cta-header-btn">Explore Market</a>
+        <button class="tool-btn account-btn" id="accountToggle" aria-label="My Account">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <a href="#market" class="explore-btn">Explore 2D Market</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
 
-    <!-- Secondary Nav Bar -->
-    <nav class="main-nav">
-      <div class="container nav-container">
-        <ul class="nav-links">
-          <li><a href="#" class="active">Home</a></li>
-          <li class="has-dropdown">
-            <a href="#market">2D Horror Market ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="#market" data-filter="rigs">👻 2D Animated Rigs</a></li>
-              <li><a href="#market" data-filter="backgrounds">🏚️ Haunted Scenery</a></li>
-              <li><a href="#market" data-filter="monsters">👹 Creatures & Demons</a></li>
-              <li><a href="#market" data-filter="props">🕯️ Cursed Props</a></li>
-              <li><a href="#market" data-filter="free">🎁 Free Assets</a></li>
+    <!-- SECONDARY NAV (ToonYug exact categories) -->
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-inner">
+        <ul class="nav-list">
+          <li class="nav-item active"><a href="#">Home</a></li>
+          <li class="nav-item has-mega">
+            <a href="#market">2D Horror Market <span class="arrow">▾</span></a>
+            <div class="mega-menu">
+              <div class="mega-col">
+                <h4 class="mega-heading">Characters</h4>
+                <a href="#" data-cat="ghosts">👻 Ghosts & Spirits</a>
+                <a href="#" data-cat="demons">😈 Demons & Devils</a>
+                <a href="#" data-cat="monsters">👹 Monsters & Creatures</a>
+                <a href="#" data-cat="humans">🧟 Possessed Humans</a>
+                <a href="#" data-cat="witches">🧙‍♀️ Witches & Warlocks</a>
+              </div>
+              <div class="mega-col">
+                <h4 class="mega-heading">Environments</h4>
+                <a href="#" data-cat="backgrounds">🏚️ Haunted Backgrounds</a>
+                <a href="#" data-cat="graveyards">⚰️ Graveyards & Crypts</a>
+                <a href="#" data-cat="forests">🌲 Dark Forests</a>
+                <a href="#" data-cat="interiors">🏠 Haunted Interiors</a>
+                <a href="#" data-cat="skies">🌑 Night Skies</a>
+              </div>
+              <div class="mega-col">
+                <h4 class="mega-heading">Assets</h4>
+                <a href="#" data-cat="props">🕯️ Cursed Props</a>
+                <a href="#" data-cat="psd">🎨 PSD Assets</a>
+                <a href="#" data-cat="audio">🎧 Voice & Sound FX</a>
+                <a href="#" data-cat="free">🎁 Free Horror Assets</a>
+                <a href="#" data-cat="bundles">📦 Mega Bundles</a>
+              </div>
+              <div class="mega-col mega-featured">
+                <div class="mega-promo">
+                  <span class="mp-tag">FEATURED</span>
+                  <h3>2026 Horror Master Panel</h3>
+                  <p>One-click 2D rigging for Adobe Animate. Free for all creators.</p>
+                  <a href="#master-panel" class="mp-link">Get Free Extension ⚡</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="#">Blogs <span class="arrow">▾</span></a>
+            <ul class="sub-menu">
+              <li><a href="#">🖥️ System & Course Info</a></li>
+              <li><a href="#">▶️ YouTube Animation Safety</a></li>
+              <li><a href="#">📋 Creator License Guide</a></li>
             </ul>
           </li>
-          <li><a href="#master-panel">Master Panel</a></li>
-          <li><a href="#voice-actors">🎙️ Voice Actors</a></li>
-          <li><a href="#tutorials">Animation Guides</a></li>
-          <li><a href="#license">License & Safety</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="nav-item"><a href="#master-panel">Master Panel</a></li>
+          <li class="nav-item"><a href="#voice-actors">🎙️ Voice Actors</a></li>
+          <li class="nav-item has-sub">
+            <a href="#">Our Services <span class="arrow">▾</span></a>
+            <ul class="sub-menu">
+              <li><a href="#">🎭 Custom Animation</a></li>
+              <li><a href="#">🌐 Web Design Service</a></li>
+              <li><a href="#">🤝 TY Partner System</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Banner Slider -->
-  <section class="hero-slider">
-    <div class="slides-wrapper">
-      <!-- Slide 1 -->
-      <div class="slide active" style="--bg-glow: radial-gradient(circle at 70% 50%, rgba(185, 28, 28, 0.35) 0%, transparent 60%);">
-        <div class="container slide-content">
-          <span class="slide-tag">ONE-CLICK ANIMATION</span>
-          <h1 class="slide-heading">Horror Master Panel <br><span class="accent-text">Instant 2D Character Rigging</span></h1>
-          <p class="slide-desc">Pre-rigged evil spirits, possessed dolls, and ghastly phantoms optimized for Adobe Animate, Moho, and After Effects.</p>
-          <div class="slide-cta">
-            <a href="#master-panel" class="btn btn-primary">Get Master Panel ⚡</a>
-            <a href="#market" class="btn btn-secondary">Browse Free Rigs</a>
+  <!-- ===== HERO SLIDER (ToonYug: 3 slides + text overlay) ===== -->
+  <section class="hero-section" id="heroSection">
+    <!-- Blood drip SVG decoration -->
+    <div class="blood-drip" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,0 L1200,0 L1200,30 Q1150,60 1100,30 Q1050,0 1000,30 Q950,60 900,30 Q850,0 800,30 Q750,60 700,30 Q650,0 600,30 Q550,60 500,30 Q450,0 400,30 Q350,60 300,30 Q250,0 200,30 Q150,60 100,30 Q50,0 0,30 Z" fill="#0a0a0c"/>
+      </svg>
+    </div>
+
+    <div class="slides-track" id="slidesTrack">
+      <!-- Slide 1: Master Panel -->
+      <div class="slide slide-1 active">
+        <div class="slide-bg">
+          <div class="animated-scene scene-1">
+            <div class="floating-ghost ghost-1">👻</div>
+            <div class="floating-ghost ghost-2">💀</div>
+            <div class="floating-ghost ghost-3">👁️</div>
+            <div class="fog-layer fog-1"></div>
+            <div class="fog-layer fog-2"></div>
+            <div class="lightning-flash" id="lightningFlash"></div>
+          </div>
+        </div>
+        <div class="slide-content">
+          <span class="slide-eyebrow">ONE-CLICK ANIMATION</span>
+          <h1 class="slide-h1">
+            <span class="line-1">Horror Stories</span>
+            <span class="line-2 gradient-text">Master Panel</span>
+          </h1>
+          <p class="slide-sub">One Click Walking. One Click Eye-Blink. Lightning-Fast Accurate Lip Sync. Optimized for Adobe Animate, Moho & After Effects.</p>
+          <div class="slide-actions">
+            <a href="#master-panel" class="btn-primary">Download & Topup ⚡</a>
+            <a href="#tutorials" class="btn-ghost">Watch Tutorials 🎬</a>
           </div>
         </div>
       </div>
-      <!-- Slide 2 -->
-      <div class="slide" style="--bg-glow: radial-gradient(circle at 70% 50%, rgba(109, 40, 217, 0.35) 0%, transparent 60%);">
-        <div class="container slide-content">
-          <span class="slide-tag">VOICE ACTORS & SOUNDS</span>
-          <h1 class="slide-heading">Cinematic Horror Vocals <br><span class="accent-text">Blood-Curdling Screams & Whispers</span></h1>
-          <p class="slide-desc">Royalty-free audio acting, demonic entity grunts, and eerie atmospheric soundtrack packs for your YouTube horror channels.</p>
-          <div class="slide-cta">
-            <a href="#voice-actors" class="btn btn-primary">Listen Voice Demos 🎧</a>
-            <a href="#market" class="btn btn-secondary">Audio FX Packs</a>
+
+      <!-- Slide 2: Premium 2D Rigs -->
+      <div class="slide slide-2">
+        <div class="slide-bg">
+          <div class="animated-scene scene-2">
+            <div class="floating-ghost ghost-4">🧛</div>
+            <div class="floating-ghost ghost-5">🕷️</div>
+            <div class="floating-ghost ghost-6">🦇</div>
+            <div class="fog-layer fog-3"></div>
+            <div class="spider-web sw-1"></div>
+            <div class="spider-web sw-2"></div>
+          </div>
+        </div>
+        <div class="slide-content">
+          <span class="slide-eyebrow">PREMIUM 2D RIGS</span>
+          <h1 class="slide-h1">
+            <span class="line-1">High-End Horror</span>
+            <span class="line-2 gradient-text">Character Rigs</span>
+          </h1>
+          <p class="slide-sub">Experience the next generation of dark character assets. Our rigs are built for professional horror story studios and YouTube creators.</p>
+          <div class="slide-actions">
+            <a href="#market" class="btn-primary">Browse 2D Characters</a>
+            <a href="#market" data-cat="backgrounds" class="btn-ghost">Haunted Backgrounds</a>
           </div>
         </div>
       </div>
-      <!-- Slide 3 -->
-      <div class="slide" style="--bg-glow: radial-gradient(circle at 70% 50%, rgba(5, 150, 105, 0.35) 0%, transparent 60%);">
-        <div class="container slide-content">
-          <span class="slide-tag">COMMERCIAL READY</span>
-          <h1 class="slide-heading">100% Monetization Safe <br><span class="accent-text">YouTube Claim & Strike Free</span></h1>
-          <p class="slide-desc">Every rig, illustration, and audio track includes lifetime commercial clearance for YouTube, OTT streaming, and social storytelling.</p>
-          <div class="slide-cta">
-            <a href="#market" class="btn btn-primary">Explore All Assets</a>
-            <a href="#license" class="btn btn-secondary">View Licensing Rules</a>
+
+      <!-- Slide 3: Bundle -->
+      <div class="slide slide-3">
+        <div class="slide-bg">
+          <div class="animated-scene scene-3">
+            <div class="floating-ghost ghost-7">🌕</div>
+            <div class="floating-ghost ghost-8">🩸</div>
+            <div class="fog-layer fog-4"></div>
+            <div class="crow crow-1">🦅</div>
+            <div class="crow crow-2">🦅</div>
+          </div>
+        </div>
+        <div class="slide-content">
+          <span class="slide-eyebrow">ULTIMATE BUNDLE</span>
+          <h1 class="slide-h1">
+            <span class="line-1">Asset Bundle</span>
+            <span class="line-2 gradient-text">2026 Edition</span>
+          </h1>
+          <p class="slide-sub">Get everything you need in one massive pack. Characters, haunted backgrounds, cursed props, and sound FX at one special bundled price.</p>
+          <div class="slide-actions">
+            <a href="#bundles" class="btn-primary">Grab Bundle 🔥</a>
+            <a href="#market" class="btn-ghost">Learn More</a>
           </div>
         </div>
       </div>
     </div>
-    
-    <!-- Slider Nav Controls -->
-    <button class="slider-btn prev" id="sliderPrev">‹</button>
-    <button class="slider-btn next" id="sliderNext">›</button>
-    <div class="slider-dots" id="sliderDots"></div>
+
+    <!-- Slider controls -->
+    <button class="slide-arrow slide-prev" id="slidePrev" aria-label="Previous slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="slide-arrow slide-next" id="slideNext" aria-label="Next slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="slide-dots" id="slideDots"></div>
   </section>
 
-  <!-- Quick Category Bar -->
-  <section class="quick-categories">
+  <!-- ===== CATEGORY ICON GRID (ToonYug exact: 14 category tiles) ===== -->
+  <section class="categories-section" id="categoriesSection">
     <div class="container">
-      <div class="categories-carousel">
-        <div class="cat-pill active" data-category="all">
-          <span class="cat-icon">🔥</span>
-          <span class="cat-title">All Items</span>
+      <div class="cats-grid" id="catsGrid">
+        <a class="cat-tile active" href="#market" data-cat="all">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🔥</span></div>
+          <span class="cat-label">All Items</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="ghosts">
+          <div class="cat-icon-wrap"><span class="cat-emoji">👻</span></div>
+          <span class="cat-label">GHOSTS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="backgrounds">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🏚️</span></div>
+          <span class="cat-label">BACKGROUNDS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="demons">
+          <div class="cat-icon-wrap"><span class="cat-emoji">😈</span></div>
+          <span class="cat-label">DEMONS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="monsters">
+          <div class="cat-icon-wrap"><span class="cat-emoji">👹</span></div>
+          <span class="cat-label">MONSTERS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="witches">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🧙‍♀️</span></div>
+          <span class="cat-label">WITCHES</span>
+        </a>
+        <a class="cat-tile" href="#master-panel" data-cat="courses">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🎬</span></div>
+          <span class="cat-label">Courses</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="props">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🕯️</span></div>
+          <span class="cat-label">CURSED PROPS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="psd">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🎨</span></div>
+          <span class="cat-label">PSD ASSETS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="audio">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🎧</span></div>
+          <span class="cat-label">VOICE ACTORS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="hybrids">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🧟</span></div>
+          <span class="cat-label">ZOMBIES</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="royals">
+          <div class="cat-icon-wrap"><span class="cat-emoji">👑</span></div>
+          <span class="cat-label">DARK ROYALS</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="free" id="free-section">
+          <div class="cat-icon-wrap"><span class="cat-emoji">🎁</span></div>
+          <span class="cat-label">FREE</span>
+        </a>
+        <a class="cat-tile" href="#market" data-cat="more">
+          <div class="cat-icon-wrap"><span class="cat-emoji">➕</span></div>
+          <span class="cat-label">More</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MASTER PANEL SECTION (ToonYug exact: Master Panel highlight before product grid) ===== -->
+  <section class="master-panel-banner" id="master-panel">
+    <div class="container">
+      <div class="mp-inner">
+        <div class="mp-text-side">
+          <div class="mp-badge-row">
+            <span class="mp-badge">🆓 FREE EXTENSION</span>
+            <span class="mp-badge mp-badge-hot">⚡ ONE-CLICK</span>
+          </div>
+          <h2 class="mp-title">Horror Stories Master Panel:<br><span class="gradient-text">Free Ghost Characters & Asset Import</span></h2>
+          <p class="mp-desc">Our custom Adobe Animate extension lets you import pre-rigged horror characters with one click. Walking cycles, eye-blink, and accurate lip-sync are all automated.</p>
+          <ul class="mp-features">
+            <li><span class="mp-check">✓</span> One-Click Walking Animation</li>
+            <li><span class="mp-check">✓</span> Automatic Eye-Blink Cycles</li>
+            <li><span class="mp-check">✓</span> Fast Accurate Lip Sync</li>
+            <li><span class="mp-check">✓</span> Free Ghost Character Included</li>
+            <li><span class="mp-check">✓</span> Works with Adobe Animate, Moho & Toon Boom</li>
+          </ul>
+          <div class="mp-actions">
+            <a href="#contact" class="btn-primary">Download & Topup ⚡</a>
+            <a href="#tutorials" class="btn-ghost btn-sm">Watch Tutorial 🎬</a>
+          </div>
         </div>
-        <div class="cat-pill" data-category="rigs">
-          <span class="cat-icon">👻</span>
-          <span class="cat-title">2D Ghost Rigs</span>
-        </div>
-        <div class="cat-pill" data-category="backgrounds">
-          <span class="cat-icon">🏚️</span>
-          <span class="cat-title">Haunted Scenery</span>
-        </div>
-        <div class="cat-pill" data-category="monsters">
-          <span class="cat-icon">👹</span>
-          <span class="cat-title">Monsters & Beasts</span>
-        </div>
-        <div class="cat-pill" data-category="props">
-          <span class="cat-icon">🕯️</span>
-          <span class="cat-title">Cursed Props</span>
-        </div>
-        <div class="cat-pill" data-category="audio">
-          <span class="cat-icon">🎧</span>
-          <span class="cat-title">Voice & Ambience</span>
-        </div>
-        <div class="cat-pill" data-category="free">
-          <span class="cat-icon">🎁</span>
-          <span class="cat-title">100% Free Pack</span>
+        <div class="mp-visual-side">
+          <!-- Animated application mockup -->
+          <div class="app-mockup">
+            <div class="app-titlebar">
+              <div class="app-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <span class="app-title-text">Horror Stories Master Panel v2.6 — Adobe Animate Extension</span>
+            </div>
+            <div class="app-body">
+              <div class="app-toolbar">
+                <div class="tb-btn tb-active" title="Ghost Rigs">👻</div>
+                <div class="tb-btn" title="Expressions">🎭</div>
+                <div class="tb-btn" title="FX">🌫️</div>
+                <div class="tb-btn" title="Lip Sync">🎙️</div>
+                <div class="tb-btn" title="Camera">🎥</div>
+                <div class="tb-btn" title="Export">📤</div>
+              </div>
+              <div class="app-canvas">
+                <div class="ghost-rig-anim">
+                  <div class="gr-body">
+                    <div class="gr-eyes">
+                      <div class="gr-eye gr-eye-l"></div>
+                      <div class="gr-eye gr-eye-r"></div>
+                    </div>
+                    <div class="gr-mouth"></div>
+                    <div class="gr-tail"></div>
+                  </div>
+                  <div class="gr-shadow"></div>
+                </div>
+                <div class="rig-hud">
+                  <div class="hud-line"><span class="hud-key">Expression:</span><span class="hud-val" id="hudExpression">Haunted Wail</span></div>
+                  <div class="hud-line"><span class="hud-key">Bone:</span><span class="hud-val">Neck_Twist_90°</span></div>
+                  <div class="hud-line"><span class="hud-key">VFX:</span><span class="hud-val">Dark Mist 80%</span></div>
+                  <div class="hud-line"><span class="hud-key">FPS:</span><span class="hud-val">24fps ✓</span></div>
+                </div>
+              </div>
+              <div class="app-timeline">
+                <div class="tl-track">
+                  <div class="tl-playhead" id="tlPlayhead"></div>
+                  <div class="tl-keyframe" style="left:20%"></div>
+                  <div class="tl-keyframe" style="left:45%"></div>
+                  <div class="tl-keyframe" style="left:70%"></div>
+                  <div class="tl-keyframe tl-kf-red" style="left:85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2D Horror Market Showcase Grid -->
-  <section id="market" class="market-section">
+  <!-- ===== 2D MARKET / PRODUCT GRID (ToonYug exact: filterable product grid) ===== -->
+  <section class="market-section" id="market">
     <div class="container">
-      <div class="section-header">
-        <div>
-          <span class="section-tag">2D HORROR MARKETPLACE</span>
-          <h2 class="section-title">Trending Dark Animation Assets</h2>
+      <div class="market-header">
+        <div class="market-title-block">
+          <span class="section-eyebrow">2D HORROR MARKETPLACE</span>
+          <h2 class="section-h2">Trending Dark Animation Assets</h2>
         </div>
-        <div class="filter-controls">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="rigs">2D Rigs</button>
-          <button class="filter-btn" data-filter="backgrounds">Backgrounds</button>
-          <button class="filter-btn" data-filter="monsters">Monsters</button>
-          <button class="filter-btn" data-filter="props">Props</button>
-          <button class="filter-btn" data-filter="audio">Sounds</button>
-          <button class="filter-btn" data-filter="free">Free</button>
+        <div class="market-filter-bar">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="ghosts">Ghosts</button>
+          <button class="filter-chip" data-filter="backgrounds">Backgrounds</button>
+          <button class="filter-chip" data-filter="monsters">Monsters</button>
+          <button class="filter-chip" data-filter="demons">Demons</button>
+          <button class="filter-chip" data-filter="props">Props</button>
+          <button class="filter-chip" data-filter="audio">Sound FX</button>
+          <button class="filter-chip" data-filter="psd">PSD</button>
+          <button class="filter-chip" data-filter="free">Free</button>
         </div>
       </div>
 
-      <!-- Dynamic Product Grid -->
       <div class="products-grid" id="productsGrid">
-        <!-- Injected via JavaScript -->
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="load-more-btn" id="loadMoreBtn">Load More Assets 🔮</button>
       </div>
     </div>
   </section>
 
-  <!-- Master Panel Feature Spotlight (Exact ToonYug Master Panel Replica) -->
-  <section id="master-panel" class="panel-spotlight">
-    <div class="container panel-grid">
-      <div class="panel-info">
-        <span class="section-tag">PRO ANIMATOR WORKFLOW</span>
-        <h2 class="section-title">Horror Stories Master Panel <br><span class="accent-text">Automate Your Animation in Seconds</span></h2>
-        <p class="panel-text">
-          Designed specifically for YouTube story creators and 2D animators. Import pre-rigged ghost characters, sync audio lip-movements, switch facial terror expressions, and trigger atmospheric rain and mist with one single shortcut.
-        </p>
-        <ul class="panel-features">
-          <li>✨ <strong>One-Click Import:</strong> Drag & drop rigged 2D characters with full bone hierarchies.</li>
-          <li>🎭 <strong>Dynamic Terror Expressions:</strong> Switch screaming, weeping, and hollow-eye states in real time.</li>
-          <li>🎬 <strong>Auto Camera Parallax:</strong> Built-in 2.5D multi-plane background depth with lighting filters.</li>
-          <li>⚡ <strong>Lightweight & Fast:</strong> Supports Adobe Animate CC, Toon Boom Harmony, and Moho.</li>
-        </ul>
-        <div class="panel-actions">
-          <a href="#contact" class="btn btn-primary">Download Free Extension</a>
-          <a href="#tutorials" class="btn btn-outline">Watch 3-Min Tutorial 📹</a>
-        </div>
-      </div>
-      <div class="panel-visual">
-        <div class="mockup-window">
-          <div class="window-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="window-title">Horror Stories Master Panel v2.6 - Adobe Extension</span>
-          </div>
-          <div class="window-body">
-            <div class="tool-sidebar">
-              <div class="tool-icon active">👻</div>
-              <div class="tool-icon">👁️</div>
-              <div class="tool-icon">🩸</div>
-              <div class="tool-icon">🌫️</div>
-              <div class="tool-icon">⚡</div>
-            </div>
-            <div class="tool-preview">
-              <div class="rig-display">
-                <div class="spirit-avatar">
-                  <div class="eyes glow-red"></div>
-                  <div class="spirit-mouth open"></div>
-                </div>
-                <div class="control-hud">
-                  <span class="hud-item">[Expression: Banshee Wail]</span>
-                  <span class="hud-item">[Bone: Neck_Twist_90°]</span>
-                  <span class="hud-item">[VFX: Black Mist 80%]</span>
-                </div>
-              </div>
-              <div class="timeline-bar">
-                <div class="timeline-fill"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Voice Actors & Audio Lab Showcase -->
-  <section id="voice-actors" class="voice-section">
+  <!-- ===== VOICE ACTORS SECTION (ToonYug exact section) ===== -->
+  <section class="voice-section" id="voice-actors">
     <div class="container">
-      <div class="section-header">
-        <div>
-          <span class="section-tag">TALENT & SOUND FX</span>
-          <h2 class="section-title">Choose Your Horror Voice Actors</h2>
-          <p class="section-sub">Audition professional dark vocalists, narrators, and mythical beasts directly with live audio triggers.</p>
-        </div>
+      <div class="section-header-centered">
+        <span class="section-eyebrow">TALENT & AUDIO FX</span>
+        <h2 class="section-h2">Choose Your <span class="gradient-text">Voice Actors</span></h2>
+        <p class="section-sub-text">Audition professional horror vocalists. Every track is 100% YouTube monetization-safe and royalty-free.</p>
       </div>
 
-      <div class="voice-grid">
-        <!-- Voice Actor Card 1 -->
-        <div class="voice-card">
-          <div class="voice-header">
-            <div class="voice-avatar">🧛‍♂️</div>
-            <div>
-              <h3 class="voice-name">Vikram "The Shadow"</h3>
-              <span class="voice-role">Deep Narrator & Entity</span>
-            </div>
-          </div>
-          <p class="voice-desc">Specializes in chilling storytelling, ancient demon whispers, and haunting prologues.</p>
-          <div class="voice-player">
-            <button class="audio-btn" data-sound="whisper">
-              <span class="play-icon">▶</span> Audition: Dark Whisper
-            </button>
-            <span class="audio-status">Click to test sound</span>
-          </div>
-        </div>
-
-        <!-- Voice Actor Card 2 -->
-        <div class="voice-card">
-          <div class="voice-header">
-            <div class="voice-avatar">🧙‍♀️</div>
-            <div>
-              <h3 class="voice-name">Kavita "Witch's Wail"</h3>
-              <span class="voice-role">Witch, Banshee & Screamer</span>
-            </div>
-          </div>
-          <p class="voice-desc">Bone-piercing screams, deranged laughter, and spine-chilling curses for climax scenes.</p>
-          <div class="voice-player">
-            <button class="audio-btn" data-sound="scream">
-              <span class="play-icon">▶</span> Audition: Banshee Scream
-            </button>
-            <span class="audio-status">Click to test sound</span>
-          </div>
-        </div>
-
-        <!-- Voice Actor Card 3 -->
-        <div class="voice-card">
-          <div class="voice-header">
-            <div class="voice-avatar">🧟‍♂️</div>
-            <div>
-              <h3 class="voice-name">Rohan "The Ghoul"</h3>
-              <span class="voice-role">Monster, Zombie & Growler</span>
-            </div>
-          </div>
-          <p class="voice-desc">Throaty subterranean monster growls, visceral chewing, and terrifying creature gasps.</p>
-          <div class="voice-player">
-            <button class="audio-btn" data-sound="growl">
-              <span class="play-icon">▶</span> Audition: Demon Growl
-            </button>
-            <span class="audio-status">Click to test sound</span>
-          </div>
-        </div>
-
-        <!-- Voice Actor Card 4 -->
-        <div class="voice-card">
-          <div class="voice-header">
-            <div class="voice-avatar">🔮</div>
-            <div>
-              <h3 class="voice-name">Dark Ambient FX</h3>
-              <span class="voice-role">Soundscapes & Eerie Drones</span>
-            </div>
-          </div>
-          <p class="voice-desc">Sub-bass frequencies, haunted grandfather clock ticks, and cold subterranean wind.</p>
-          <div class="voice-player">
-            <button class="audio-btn" data-sound="drone">
-              <span class="play-icon">▶</span> Audition: Haunted Drone
-            </button>
-            <span class="audio-status">Click to test sound</span>
-          </div>
-        </div>
+      <div class="va-grid" id="vaGrid">
+        <!-- Populated by JS -->
       </div>
     </div>
   </section>
 
-  <!-- Creator License & Safety Guide (ToonYug Specific Feature) -->
-  <section id="license" class="license-section">
+  <!-- ===== LICENSE & SAFETY (ToonYug specific feature) ===== -->
+  <section class="license-section" id="license">
     <div class="container">
-      <div class="license-box">
-        <div class="license-content">
-          <span class="section-tag">CREATOR SAFETY</span>
-          <h2 class="section-title">YouTube Animation Safety & Creator License</h2>
-          <p class="license-desc">
-            We understand how important your channel is. Every single asset sold or distributed on Horror Stories is verified for 100% strike-free monetization across YouTube, Facebook Watch, and OTT.
-          </p>
-          <div class="safety-badges">
-            <div class="safety-badge">
-              <span class="badge-icon">🛡️</span>
-              <div>
-                <h4>Zero Copyright Strikes</h4>
-                <p>Whitelisted audio stems and original hand-drawn vector rigs.</p>
-              </div>
+      <div class="lic-inner">
+        <div class="lic-text">
+          <span class="section-eyebrow">CREATOR SAFETY FIRST</span>
+          <h2 class="section-h2">YouTube Animation Safety &<br>Creator License</h2>
+          <p>Every asset on Horror Stories is verified strike-free across YouTube, Facebook Watch, Shorts, and OTT platforms. We provide instant digital certificates with every purchase.</p>
+          <div class="lic-info-grid">
+            <div class="lic-info-card">
+              <span class="lic-icon">🛡️</span>
+              <h4>Zero Copyright Strikes</h4>
+              <p>Original hand-drawn vector rigs and whitelisted audio stems.</p>
             </div>
-            <div class="safety-badge">
-              <span class="badge-icon">💼</span>
-              <div>
-                <h4>Lifetime Commercial Rights</h4>
-                <p>Use in unlimited episodes, client commercials, and films.</p>
-              </div>
+            <div class="lic-info-card">
+              <span class="lic-icon">💼</span>
+              <h4>Lifetime Commercial</h4>
+              <p>Use in unlimited YouTube episodes, reels, ads, and client films.</p>
             </div>
-            <div class="safety-badge">
-              <span class="badge-icon">⚡</span>
-              <div>
-                <h4>Content ID Protection</h4>
-                <p>Immediate digital license certificate provided with every download.</p>
-              </div>
+            <div class="lic-info-card">
+              <span class="lic-icon">⚡</span>
+              <h4>Instant License Key</h4>
+              <p>Digital license certificate delivered immediately after payment.</p>
             </div>
+            <div class="lic-info-card">
+              <span class="lic-icon">🔄</span>
+              <h4>Content ID Protection</h4>
+              <p>All audio tracks cleared from Content ID claims globally.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lic-badge-block">
+          <div class="trust-badges">
+            <div class="trust-badge"><span>✔</span> GST Registered</div>
+            <div class="trust-badge"><span>🔒</span> Secure Payments</div>
+            <div class="trust-badge"><span>🌐</span> 45,000+ Creators</div>
+            <div class="trust-badge"><span>⭐</span> 4.9/5 Rating</div>
+          </div>
+          <!-- Payment logos -->
+          <div class="payment-logos">
+            <span class="pay-logo">💳 Visa</span>
+            <span class="pay-logo">💳 Mastercard</span>
+            <span class="pay-logo">🏦 UPI</span>
+            <span class="pay-logo">📱 Stripe</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact & Newsletter -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-grid">
-      <div>
-        <span class="section-tag">STAY CONNECTED</span>
-        <h2 class="section-title">Join 45,000+ Horror Animators</h2>
-        <p>Get weekly free rigged horror characters, creepy sound effects, and YouTube storytelling masterclasses delivered directly to your inbox.</p>
-        
-        <form class="newsletter-form" id="newsletterForm">
-          <input type="email" placeholder="Enter your creator email..." required>
-          <button type="submit" class="btn btn-primary">Get Free Assets 🎁</button>
-        </form>
-        <div id="newsletterMsg" class="success-msg"></div>
+  <!-- ===== TUTORIALS / BLOG SECTION ===== -->
+  <section class="tutorials-section" id="tutorials">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-eyebrow">FREE MASTERCLASSES</span>
+        <h2 class="section-h2">Horror Animation <span class="gradient-text">Tutorials</span></h2>
       </div>
-
-      <div class="custom-request-card">
-        <h3>Need Custom 2D Horror Characters?</h3>
-        <p>Our studio builds bespoke 2D rigged puppets for specific mythological stories, Indian folk horror, and creepypasta series.</p>
-        <a href="mailto:contact@horrorstories.com?subject=Custom%202D%20Horror%20Rig%20Inquiry" class="btn btn-secondary">Request Custom Quote</a>
+      <div class="tutorials-grid" id="tutorialsGrid">
+        <!-- Populated by JS -->
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-col brand-col">
-        <div class="brand-logo">
-          <span class="logo-icon">💀</span>
-          <span class="brand-title">HORROR STORIES</span>
+  <!-- ===== NEWSLETTER + CONTACT (ToonYug exact) ===== -->
+  <section class="newsletter-section" id="contact">
+    <div class="container">
+      <div class="nl-inner">
+        <div class="nl-text">
+          <span class="section-eyebrow">JOIN THE COMMUNITY</span>
+          <h2 class="nl-title">Join 45,000+ Horror Animators</h2>
+          <p>Get weekly free rigged horror characters, creepy sound effects, and YouTube storytelling masterclasses delivered directly to your inbox.</p>
+          <form class="nl-form" id="nlForm">
+            <input type="email" placeholder="Enter your creator email..." required id="nlEmail">
+            <button type="submit" class="btn-primary">Get Free Assets 🎁</button>
+          </form>
+          <p class="nl-footnote">Will be used in accordance with our <a href="#">Privacy Policy</a></p>
+          <div id="nlSuccess" class="nl-success"></div>
         </div>
-        <p class="footer-about">
-          The premier open-source creative ecosystem for 2D horror animators, indie filmmakers, and audio storytellers.
-        </p>
-        <div class="social-links">
-          <a href="#" aria-label="YouTube">▶ YouTube</a>
-          <a href="#" aria-label="Discord">💬 Discord</a>
-          <a href="#" aria-label="GitHub">🐙 GitHub</a>
-          <a href="#" aria-label="Instagram">📸 Instagram</a>
+        <div class="nl-contact-card">
+          <h3>Contact & Support</h3>
+          <div class="contact-row">
+            <span>📞</span>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+919318400529">+91 931-840-0529</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span>✉️</span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:info@horrorstories.in">info@horrorstories.in</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span>📍</span>
+            <div>
+              <strong>Office</strong>
+              <p>New Delhi, India - 110044</p>
+            </div>
+          </div>
+          <a href="mailto:info@horrorstories.in?subject=Custom%20Horror%20Rig%20Request" class="btn-primary" style="margin-top:1rem; display:block; text-align:center;">Custom Animation Request 🎭</a>
         </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>2D Marketplace</h4>
-        <ul>
-          <li><a href="#market">2D Ghost Rigs</a></li>
-          <li><a href="#market">Haunted Scenery</a></li>
-          <li><a href="#market">Monsters & Beasts</a></li>
-          <li><a href="#market">Cursed Props</a></li>
-          <li><a href="#market">Photoshop PSD Assets</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Resources & Tools</h4>
-        <ul>
-          <li><a href="#master-panel">Master Panel Plugin</a></li>
-          <li><a href="#voice-actors">Horror Voice Actors</a></li>
-          <li><a href="#license">Commercial License</a></li>
-          <li><a href="#license">YouTube Safety Policy</a></li>
-          <li><a href="#market">Free Asset Packs</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>About & Support</h4>
-        <ul>
-          <li><a href="#contact">Contact Support</a></li>
-          <li><a href="#">Creator Community</a></li>
-          <li><a href="#">Submit Assets</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <div class="container bottom-inner">
-        <p>&copy; 2026 Horror Stories. Built with open source resources. All rights reserved.</p>
-        <p class="hosting-note">⚡ Deployed with GitHub Pages & Actions.</p>
+  <!-- ===== FOOTER (ToonYug exact 4-column layout) ===== -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col footer-brand">
+          <a href="#" class="footer-logo">
+            <span class="fl-skull">💀</span>
+            <span class="fl-name">HORROR STORIES</span>
+          </a>
+          <p class="footer-about">Premium 2D horror animation assets, character rigs, and audio FX for YouTube horror creators and indie animation studios worldwide.</p>
+          <div class="footer-contact-info">
+            <p>📞 +91 931-840-0529</p>
+            <p>✉️ info@horrorstories.in</p>
+            <p>📍 New Delhi, India - 110044</p>
+            <p>✔ GST: 07HMDPK0710B1ZP</p>
+          </div>
+          <div class="social-row">
+            <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+            <a href="#" class="social-btn" aria-label="Discord">💬</a>
+            <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+            <a href="https://github.com/PriyankaNeogi/horror-stories" class="social-btn" aria-label="GitHub">🐙</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Useful Links -->
+        <div class="footer-col">
+          <h4>USEFUL LINKS</h4>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Remove Copyright</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Customer Support -->
+        <div class="footer-col">
+          <h4>CUSTOMER SUPPORT</h4>
+          <ul>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#">Support Center</a></li>
+            <li><a href="#license">License Agreements</a></li>
+            <li><a href="#">My Account & Downloads</a></li>
+            <li><a href="#">Cancellation & Refund Policy</a></li>
+            <li><a href="#">Shipping & Delivery Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Customer Links -->
+        <div class="footer-col">
+          <h4>CUSTOMER LINKS</h4>
+          <ul>
+            <li><a href="#">Recorded Courses</a></li>
+            <li><a href="#">Live Courses</a></li>
+            <li><a href="#voice-actors">Voice Actors</a></li>
+            <li><a href="#">Web Design Services</a></li>
+            <li><a href="#">TY Partner Management</a></li>
+          </ul>
+          <div class="available-on">
+            <p><strong>AVAILABLE ON:</strong></p>
+            <div class="platform-badges">
+              <span class="pf-badge">💻 Windows</span>
+              <span class="pf-badge">🍎 macOS</span>
+            </div>
+            <p style="margin-top:.75rem"><strong>COMING SOON:</strong></p>
+            <div class="platform-badges">
+              <span class="pf-badge">📱 Android</span>
+              <span class="pf-badge">🍏 iOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Horror Stories. All Rights Reserved. Built with open-source resources.</p>
+        <div class="footer-bottom-payments">
+          <span>Secure Payments:</span>
+          <span class="fpay-logo">💳 Visa</span>
+          <span class="fpay-logo">💳 Mastercard</span>
+          <span class="fpay-logo">📱 Stripe</span>
+          <span class="fpay-logo">🏦 UPI</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Slide-Out Shopping Cart Drawer -->
-  <div class="cart-drawer-overlay" id="cartOverlay"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="drawer-header">
-      <h3>Your Horror Cart (<span id="cartCountDrawer">0</span>)</h3>
-      <button class="close-drawer" id="closeCartBtn">&times;</button>
+  <!-- ===== SLIDE-OUT CART DRAWER ===== -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-drawer-header">
+      <h3>Your Cart <span id="cartDrawerCount">(0)</span></h3>
+      <button class="drawer-close" id="cartDrawerClose" aria-label="Close cart">✕</button>
     </div>
-    <div class="drawer-body" id="cartItemsContainer">
-      <p class="empty-cart-text">Your cart is empty. Pick a scary rig or asset!</p>
-    </div>
-    <div class="drawer-footer">
-      <div class="cart-total-row">
-        <span>Total:</span>
-        <span class="total-price" id="cartTotalDisplay">$0.00</span>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <div class="empty-ghost">👻</div>
+        <p>Your cart is empty.<br>Pick a terrifying asset!</p>
       </div>
-      <button class="btn btn-primary checkout-btn" id="checkoutBtn">Instant Download / Checkout</button>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span class="cart-total-amount" id="cartTotal">₹0.00</span>
+      </div>
+      <button class="btn-primary cart-checkout-btn" id="checkoutBtn">Proceed to Checkout 💳</button>
+      <button class="btn-ghost" id="continueShoppingBtn">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- ===== PRODUCT QUICK VIEW MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true">
+      <button class="modal-close-btn" id="modalClose" aria-label="Close preview">✕</button>
+      <div class="modal-content" id="modalContent"></div>
     </div>
   </div>
 
-  <!-- Asset Quick Preview Modal -->
-  <div class="modal-overlay" id="previewModal">
-    <div class="modal-card">
-      <button class="modal-close" id="closeModalBtn">&times;</button>
-      <div class="modal-body" id="modalBody">
-        <!-- Populated via script -->
+  <!-- ===== STRIPE PAYMENT MODAL ===== -->
+  <div class="modal-backdrop" id="paymentBackdrop">
+    <div class="payment-modal" id="paymentModal" role="dialog" aria-modal="true" aria-label="Checkout">
+      <button class="modal-close-btn" id="paymentModalClose" aria-label="Close checkout">✕</button>
+      <div class="payment-modal-inner">
+        <h2 class="payment-title">Secure Checkout <span class="lock-icon">🔒</span></h2>
+        <div class="order-summary" id="orderSummary"></div>
+        <form id="paymentForm">
+          <div class="pf-section">
+            <h4>Contact Information</h4>
+            <div class="pf-row">
+              <div class="pf-field">
+                <label for="pfEmail">Email</label>
+                <input type="email" id="pfEmail" placeholder="your@email.com" required>
+              </div>
+              <div class="pf-field">
+                <label for="pfName">Full Name</label>
+                <input type="text" id="pfName" placeholder="Your Name" required>
+              </div>
+            </div>
+          </div>
+          <div class="pf-section">
+            <h4>Payment Details <span class="stripe-badge">Powered by Stripe 🔒</span></h4>
+            <!-- Stripe Elements mount point -->
+            <div id="stripeCardElement" class="stripe-element-mount"></div>
+            <div id="stripeCardErrors" class="stripe-card-errors" role="alert"></div>
+          </div>
+          <button type="submit" class="btn-primary payment-submit-btn" id="paymentSubmitBtn">
+            <span id="payBtnText">Pay Now ⚡</span>
+          </button>
+        </form>
+        <div class="payment-secure-note">
+          <p>🔒 Your payment is encrypted and secure. We never store your card details.</p>
+          <p>After payment you'll receive an instant email with your license key and download links.</p>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Payment Success Screen -->
+  <div class="modal-backdrop" id="successBackdrop">
+    <div class="success-modal" id="successModal">
+      <div class="success-anim">
+        <div class="success-skull">💀</div>
+        <div class="success-glow"></div>
+      </div>
+      <h2>Payment Successful! 🎉</h2>
+      <p>Your horror assets are ready. Check your email for the download link and license key.</p>
+      <p id="successOrderId" style="color:#94a3b8; font-size:.85rem;"></p>
+      <button class="btn-primary" id="successCloseBtn">Continue Creating 👻</button>
+    </div>
+  </div>
+
+  <!-- ===== WISHLIST SIDEBAR ===== -->
+  <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Wishlist">
+    <div class="cart-drawer-header">
+      <h3>My Wishlist 🖤 <span id="wishlistDrawerCount">(0)</span></h3>
+      <button class="drawer-close" id="wishlistDrawerClose" aria-label="Close wishlist">✕</button>
+    </div>
+    <div class="cart-items" id="wishlistItems">
+      <div class="cart-empty" id="wishlistEmpty">
+        <div class="empty-ghost">🖤</div>
+        <p>No items saved yet.<br>Heart an asset to save it here!</p>
+      </div>
+    </div>
+  </aside>
 
   <script src="script.js"></script>
 </body>
